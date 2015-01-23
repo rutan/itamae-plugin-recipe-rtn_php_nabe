@@ -1,8 +1,14 @@
 {
   "rtn_php_nabe": {
     "versions": {
-      "5.6.4": [],
-      "5.5.20": []
+      "5.6.4": {
+        "configure": "--with-curl --enable-sockets",
+        "extensions": ["mbstring"]
+      },
+      "5.5.20": {
+        "configure": "",
+        "extensions": []
+      }
     },
     "use": "5.6.4"
   }

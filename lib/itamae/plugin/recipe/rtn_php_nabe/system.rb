@@ -40,9 +40,15 @@ execute 'add php-nabe settings' do
   not_if "test `touch #{profile_path} && cat #{profile_path} | grep 'php-nabe' -c` != 0"
 end
 
-node[:rtn_php_nabe][:versions].each do |php_version, extensions|
-  execute ". #{profile_path} && php-nabe install #{php_version}" do
+node[:rtn_php_nabe][:versions].each do |php_version, parameters|
+  execute ". #{profile_path} && php-nabe install #{php_version} #{parameters['configure']}" do
     not_if "test `. #{profile_path} && php-nabe ls | grep '#{php_version}' -c` != 0"
+  end
+  execute ". #{profile_path} && php-nabe use #{php_version}"
+  (parameters['extensions'] || []).each do |name|
+    execute ". #{profile_path} && php-nabe ext-install #{name}" do
+      not_if "test `. #{profile_path} && php -m | grep '#{name}' -c` != 0"
+    end
   end
 end
 

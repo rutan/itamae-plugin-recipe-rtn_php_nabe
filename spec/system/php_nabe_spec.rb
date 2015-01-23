@@ -17,3 +17,13 @@ describe command(". /etc/profile && php -v") do
   its(:stdout) { should match /5\.6\.4/ }
 end
 
+describe command(". /etc/profile && php-config --configure-options") do
+  let(:disable_sudo) { true }
+  its(:stdout) { should match /with-curl/ }
+end
+
+describe command(". /etc/profile && php -m") do
+  let(:disable_sudo) { true }
+  its(:stdout) { should match /mbstring/ }
+end
+
