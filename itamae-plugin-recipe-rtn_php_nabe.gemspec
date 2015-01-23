@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Itamae::Plugin::Recipe::RtnPhpNabe::VERSION
   spec.authors       = ["Ru/MuckRu"]
   spec.email         = ["ru_shalm@hazimu.com"]
-  spec.summary       = %q{Itamae Recipe 'php-nabe'}
-  spec.description   = %q{Itamae Recipe 'php-nabe'}
+  spec.summary       = %q{Itamae recipe plugin for php-nabe.}
+  spec.description   = %q{Itamae recipe plugin for php-nabe.}
   spec.homepage      = "https://github.com/rutan/itamae-plugin-recipe-rtn_php_nabe"
   spec.license       = 'MIT'
 
